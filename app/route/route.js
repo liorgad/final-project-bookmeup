@@ -6,8 +6,8 @@ app.config(function ($routeProvider, $locationProvider) {
 
     $routeProvider
         .when("/", {
-            templateUrl: "index.html"//,
-            //controller: "coverCtrl"
+            templateUrl: "app/landingPage/landingPage.html",
+            controller: "landingPageCtrl"
         })        
         .otherwise({
             redirectTo: "/"

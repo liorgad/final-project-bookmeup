@@ -1,0 +1,16 @@
+{
+  "name": "final-project-bookmeup",
+  "version": "1.0.0",
+  "description": "Web Application for booking a meeting",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://liorgad@bitbucket.org/liorgad/final-project-bookmeup.git"
+  },
+  "author": "Lior Gad",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/liorgad/final-project-bookmeup#readme"
+}
