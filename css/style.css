@@ -3,3 +3,17 @@
     -moz-box-shadow: 0 8px 6px -6px #999;
     box-shadow: 0 8px 6px -6px #999;    
 }
+
+.profession-search-form{
+    /* position: relative; */
+}
+
+.search-results{
+    /* position: absolute; */
+    width: 100%;
+    z-index: 10;
+}
+
+.highlightedText {
+    background: yellow;
+}
