@@ -1,3 +1,5 @@
-app.controller("landingPageCtrl",function($scope){
-    $scope.test = "bla";
+app.controller("landingPageCtrl",function($scope,$location){
+    $scope.book = function(){
+        $location.path("/book");
+    };
 });

@@ -8,6 +8,10 @@ app.config(function ($routeProvider, $locationProvider) {
         .when("/", {
             templateUrl: "app/landingPage/landingPage.html",
             controller: "landingPageCtrl"
+        })  
+        .when("/book", {
+            templateUrl: "app/book/book.html",
+            controller: "bookCtrl"
         })        
         .otherwise({
             redirectTo: "/"
