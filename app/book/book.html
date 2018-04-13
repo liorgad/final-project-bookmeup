@@ -7,10 +7,28 @@
             <input type="text" class="form-control" placeholder="search profession" ng-model="queryProfession" ng-change="searchProfessionChange()">
             <div class="search-results list-group mt-2" ng-show="professionResults.length > 0">
 
-                <a ng-click="selectProfession(result)" href="#" class="list-group-item list-group-item-action" ng-repeat="profession in professionResults | filter:filterProfession"><span ng-bind-html="highlight(profession, queryProfession)"></span>
-                    </a>
+                <a ng-click="selectProfession(profession)" class="list-group-item list-group-item-action" ng-repeat="profession in professionResults | filter:filterProfession">
+                    <span ng-bind-html="highlight(profession, queryProfession)"></span>
+                </a>
             </div>
         </div>
     </form>
 
+    <div class="container-fluid">
+        <hr class="my-2">
+        <div class="row" ng-show="serviceProviders.length > 0">
+            <div class="col-md-3 my2" ng-repeat="serviceProvider in serviceProviders | filter:filterSelectedProfession">
+                <div class="card change-cursor" ng-click="openDetails(serviceProvider)">
+                    <img class="card-img-top" ng-src="{{serviceProvider.imageURL}}" alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title">                            
+                        {{serviceProvider.getFullName()}}
+                        </h4>
+                        <label>Profession :</label>
+                        <p class="card-text">{{serviceProvider.occupation}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

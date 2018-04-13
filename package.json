@@ -12,5 +12,6 @@
   },
   "author": "Lior Gad",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/liorgad/final-project-bookmeup#readme"
+  "homepage": "https://bitbucket.org/liorgad/final-project-bookmeup#readme",
+  "dependencies": {}
 }

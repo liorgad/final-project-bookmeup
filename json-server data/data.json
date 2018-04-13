@@ -1,0 +1,33 @@
+{
+    "service-providers": [
+        {
+            "id": 1,
+            "fname": "john",
+            "lname": "doe",
+            "imageURL": "",
+            "phone": "",
+            "cell-phone": "",
+            "email": "",
+            "occupation": "dentist",
+            "buisness-address": "",
+            "available-time": [],
+            "occupied-time": []
+        },
+        {
+            "id": 2,
+            "fname": "jane",
+            "lname": "dwain",
+            "imageURL": "",
+            "phone": "",
+            "cell-phone": "",
+            "email": "",
+            "occuption": "lawyer",
+            "buisness-address": "",
+            "available-time": [],
+            "occupied-time": []
+        }
+    ],
+    "customers": [
+
+    ]
+}

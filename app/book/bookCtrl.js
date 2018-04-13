@@ -1,7 +1,8 @@
-//@ts-check
-app.controller("bookCtrl", function ($scope, professionService,$sce) {
+app.controller("bookCtrl", function ($scope, professionService,$sce,serviceProvidersService) {
     $scope.test = "bla";
     $scope.professionResults = [];
+    $scope.serviceProviders = [];
+    $scope.selectedProfession ="";
 
     professionService.load();
 
@@ -13,6 +14,7 @@ app.controller("bookCtrl", function ($scope, professionService,$sce) {
         }
     };
 
+    // highlight seatched text
     $scope.highlight = function(text, search) {
         if (!search) {
             return $sce.trustAsHtml(text);
@@ -20,11 +22,24 @@ app.controller("bookCtrl", function ($scope, professionService,$sce) {
         return $sce.trustAsHtml(text.replace(new RegExp(search, 'gi'), '<span class="highlightedText">$&</span>'));
     };
 
+    // filters results
     $scope.filterProfession = function(prof){
         return prof.indifferentIncludes($scope.queryProfession);
     };
 
-    $scope.selectProfession = function (result) {
+
+    // a profession was selected, loading relevant service providers
+    $scope.selectProfession = function (profession) {
+        $scope.selectedProfession = profession;
+        serviceProvidersService.load().then(()=>{            //successful load             
+            $scope.serviceProviders = serviceProvidersService.serviceProviders.filter( (v) => {return v.occupation === $scope.selectedProfession;});
+            $scope.queryProfession = "";
+            $scope.professionResults =[];
+        });
+
+    };
+
+    $scope.openDetails = function(serviceProvider){
 
     };
 });
