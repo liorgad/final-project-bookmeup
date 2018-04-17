@@ -1,4 +1,3 @@
-//@ts-check
 app.config(function ($routeProvider, $locationProvider) {
 
     // $locationProvider.html5Mode(true);
@@ -12,7 +11,11 @@ app.config(function ($routeProvider, $locationProvider) {
         .when("/book", {
             templateUrl: "app/book/book.html",
             controller: "bookCtrl"
-        })        
+        })
+        .when("/bookService/:serviceProviderId",{
+            templateUrl : "app/bookService/bookService.html",
+            controller : "bookServiceCtrl"
+        })      
         .otherwise({
             redirectTo: "/"
         });

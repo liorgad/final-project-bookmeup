@@ -3,11 +3,14 @@
     <hr class="my-2">
 
     <form class="profession-search-form my-3">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="search profession" ng-model="queryProfession" ng-change="searchProfessionChange()">
-            <div class="search-results list-group mt-2" ng-show="professionResults.length > 0">
 
-                <a ng-click="selectProfession(profession)" class="list-group-item list-group-item-action" ng-repeat="profession in professionResults | filter:filterProfession">
+        <!-- <md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="item in getMatches(searchText)" md-item-text="item.display">
+            <span md-highlight-text="searchText">{{item.display}}</span>
+        </md-autocomplete> -->
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="search profession" ng-model="queryProfession" ng-change="searchProfessionChange()" >
+            <div class="search-results list-group mt-2" ng-show="professionResults.length > 0" >
+                <a  ng-click="selectProfession(profession)" class="list-group-item list-group-item-action" ng-repeat="profession in professionResults | filter:filterProfession">
                     <span ng-bind-html="highlight(profession, queryProfession)"></span>
                 </a>
             </div>
@@ -21,11 +24,20 @@
                 <div class="card change-cursor" ng-click="openDetails(serviceProvider)">
                     <img class="card-img-top" ng-src="{{serviceProvider.imageURL}}" alt="Card image">
                     <div class="card-body">
-                        <h4 class="card-title">                            
-                        {{serviceProvider.getFullName()}}
+                        <h4 class="card-title">
+                            {{serviceProvider.getFullName()}}
                         </h4>
                         <label>Profession :</label>
                         <p class="card-text">{{serviceProvider.occupation}}</p>
+
+                        <!--Facebook-->
+                        <a href="#">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <!--Twitter-->
+                        <a href="#">
+                            <i class="fa fa-twitter"></i>
+                        </a>
                     </div>
                 </div>
             </div>
