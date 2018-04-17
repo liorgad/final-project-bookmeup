@@ -14,6 +14,7 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/liorgad/final-project-bookmeup#readme",
   "dependencies": {
+    "angular-ui-calendar": "^1.0.2",
     "fullcalendar": "^3.9.0"
   },
   "devDependencies": {}
