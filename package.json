@@ -13,6 +13,8 @@
   "author": "Lior Gad",
   "license": "ISC",
   "homepage": "https://bitbucket.org/liorgad/final-project-bookmeup#readme",
-  "dependencies": {},
+  "dependencies": {
+    "fullcalendar": "^3.9.0"
+  },
   "devDependencies": {}
 }
