@@ -2,8 +2,8 @@ app.factory("serviceProvidersService",function($q,$log,$http){
 
     function ServiceProvider(id,fname,lname,image,phone,cellPhone,email,profession,address){
         this.id = id;
-        this.fname =fname;
-        this.lname = lname;
+        this.fname =fname.toTitleCase();
+        this.lname = lname.toTitleCase();
 
         this.imageURL = (image == undefined || image == null || image == "")? '../../images/img_avatar3.png' : image;
         

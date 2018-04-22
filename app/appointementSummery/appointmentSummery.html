@@ -1,4 +1,25 @@
-<div class="container">
-    <h1>Summery !!!!!</h1>
-    {{5+5}}
+<div class="container">    
+    <form>
+        <div class="form-group">
+            <h2 class="display-4 text-center">Who ?</h2>
+            <hr class="my-3">            
+            <p>{{appointment.serviceProvider.fname}} {{appointment.serviceProvider.lname}} , {{appointment.serviceProvider.occupation}}</p>
+            <h2 class="display-4 text-center">You ?</h2>
+            <hr class="my-3">            
+            <p>{{appointment.customer.firstName}} {{appointment.customer.lastName}} , {{appointment.customer.address}}</p>
+            <h2 class="display-4 text-center">When ?</h2>
+            <hr class="my-3">            
+            <p>From : {{appointment.date.start}} To:  {{appointment.customer.end}} </p>
+        </div>
+        <!-- <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="pwd">
+        </div>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox"> Remember me
+            </label>
+        </div> -->
+        <button type="submit" class="btn btn-error">Confirm !</button>
+    </form>
 </div>

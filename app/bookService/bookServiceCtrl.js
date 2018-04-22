@@ -23,8 +23,8 @@ app.controller("bookServiceCtrl", function ($scope, $location, $routeParams, ser
     $scope.createAppointmentSummery= function(){
 
         var customer = {
-            firstName : $scope.customerFirstName,
-            lastName: $scope.customerLastName,
+            firstName : $scope.customerFirstName.toTitleCase(),
+            lastName: $scope.customerLastName.toTitleCase(),
             email : $scope.customerEmail,
             phone : $scope.customerPhone,
             address : $scope.customerAddress,
