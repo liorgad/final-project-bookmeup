@@ -6,10 +6,10 @@
             "lname": "doe",
             "imageURL": "",
             "phone": "",
-            "cell-phone": "",
-            "email": "",
+            "cell-phone": "054123456",
+            "email": "me@me.me.me",
             "occupation": "dentist",
-            "buisness-address": "",
+            "buisness-address": "david chachami 15, Tel-aviv",
             "available-time": [],
             "occupied-time": []
         },

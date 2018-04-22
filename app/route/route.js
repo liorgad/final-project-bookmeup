@@ -15,6 +15,10 @@ app.config(function ($routeProvider, $locationProvider) {
         .when("/bookService/:serviceProviderId",{
             templateUrl : "app/bookService/bookService.html",
             controller : "bookServiceCtrl"
+        })
+        .when("/bookService/:serviceProviderId/summery",{
+            templateUrl : "app/appointementSummery/appointmentSummery.html",
+            controller : "appointmentSummeryCtrl"
         })      
         .otherwise({
             redirectTo: "/"

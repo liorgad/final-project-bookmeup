@@ -45,19 +45,19 @@ app.controller("bookCtrl", function ($timeout, $q,$location,$log,$scope, profess
         $location.path("/bookService/"+serviceProvider.id);
     };
 
-    $scope.keyPress = function (event) {
-        switch (event.key) {
-            case 'ArrowDown':
-                alert('arrowDown');
-                break;
-            case 'ArrowUp':
-                alert('arrowUp');
-                break;
-            case 'Enter':
-                break;
-            default:
-                $log.debug(event.key);
-                break;
-        }
-    };
+    // $scope.keyPress = function (event) {
+    //     switch (event.key) {
+    //         case 'ArrowDown':
+    //             alert('arrowDown');
+    //             break;
+    //         case 'ArrowUp':
+    //             alert('arrowUp');
+    //             break;
+    //         case 'Enter':
+    //             break;
+    //         default:
+    //             $log.debug(event.key);
+    //             break;
+    //     }
+    // };
 });
