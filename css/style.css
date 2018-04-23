@@ -1,11 +1,10 @@
 .navbar-shadow {
     -webkit-box-shadow: 0 8px 6px -6px #999;
     -moz-box-shadow: 0 8px 6px -6px #999;
-    box-shadow: 0 8px 6px -6px #999;    
+    box-shadow: 0 8px 6px -6px #999;
 }
 
-
-.search-results{
+.search-results {
     /* position: absolute; */
     width: 100%;
     z-index: 10;
@@ -16,6 +15,7 @@
 }
 
 /* Style all font awesome icons */
+
 .fa {
     padding: 0.5em;
     font-size: 1em;
@@ -26,6 +26,7 @@
 }
 
 /* Add a hover effect if you want */
+
 .fa:hover {
     opacity: 0.7;
 }
@@ -33,47 +34,55 @@
 /* Set a specific color for each brand */
 
 /* Facebook */
+
 .fa-facebook {
     background: #3B5998;
     color: white;
 }
 
 /* Twitter */
+
 .fa-twitter {
     background: #55ACEE;
     color: white;
 }
 
-
-
-.sign-up-container{
+.sign-up-container {
     color: #fff;
     background: #63738a;
     font-family: 'Roboto', sans-serif;
 }
-.form-control{
+
+.form-control {
     height: 40px;
     box-shadow: none;
     color: #969fa4;
 }
-.form-control:focus{
+
+.form-control:focus {
     border-color: #5cb85c;
 }
-.form-control, .btn{        
+
+.form-control,
+.btn {
     border-radius: 3px;
 }
-.signup-form{
+
+.signup-form {
     width: 530px;
     margin: 0 auto;
     padding: 30px 0;
 }
- .signup-form h2{
+
+.signup-form h2 {
     color: #636363;
     margin: 0 0 15px;
     position: relative;
     text-align: center;
 }
-.signup-form h2:before, .signup-form h2:after{
+
+.signup-form h2:before,
+.signup-form h2:after {
     content: "";
     height: 2px;
     width: 35%;
@@ -81,19 +90,23 @@
     position: absolute;
     top: 50%;
     z-index: 2;
-}	
-.signup-form h2:before{
+}
+
+.signup-form h2:before {
     left: 0;
 }
-.signup-form h2:after{
+
+.signup-form h2:after {
     right: 0;
 }
-.signup-form .hint-text{
+
+.signup-form .hint-text {
     color: #999;
     margin-bottom: 30px;
     text-align: center;
 }
-.signup-form form{
+
+.signup-form form {
     color: #999;
     border-radius: 3px;
     margin-bottom: 15px;
@@ -101,35 +114,69 @@
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     padding: 30px;
 }
-.signup-form .form-group{
+
+.signup-form .form-group {
     margin-bottom: 20px;
 }
-.signup-form input[type="checkbox"]{
+
+.signup-form input[type="checkbox"] {
     margin-top: 3px;
 }
-.signup-form .btn{        
+
+.signup-form .btn {
     font-size: 16px;
-    font-weight: bold;		
+    font-weight: bold;
     min-width: 140px;
     outline: none !important;
 }
-.signup-form .row div:first-child{
+
+.signup-form .row div:first-child {
     padding-right: 10px;
 }
-.signup-form .row div:last-child{
+
+.signup-form .row div:last-child {
     padding-left: 10px;
-}    	
-.signup-form a{
+}
+
+.signup-form a {
     color: #fff;
     text-decoration: underline;
 }
-.signup-form a:hover{
+
+.signup-form a:hover {
     text-decoration: none;
 }
-.signup-form form a{
+
+.signup-form form a {
     color: #5cb85c;
     text-decoration: none;
-}	
-.signup-form form a:hover{
+}
+
+.signup-form form a:hover {
     text-decoration: underline;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.glyphicon {
+    cursor: pointer;
 }

@@ -1,6 +1,24 @@
-app.controller('registerCtrl',function($scope,professionService,$sce){
-    
+app.controller('registerCtrl', function ($scope, professionService, $sce, $log) {
+
+    $scope.uploadedFile = "";
+    $scope.firstName = "";
+    $scope.lastName = "";
+    $scope.selectedProfession = "";
+    $scope.queryProfession = "";
+    $scope.phoneNumber = "";
+    $scope.email = "";
+    $scope.pwd = "";
+
+    $scope.pwdConfirm = "";
     $scope.professionResults = [];
+
+    $scope.params = {};
+
+    $scope.showPassword = false;
+
+    $scope.toggleShowPassword = function () {
+        $scope.showPassword = !$scope.showPassword;
+    };
 
     professionService.load();
 
@@ -30,6 +48,12 @@ app.controller('registerCtrl',function($scope,professionService,$sce){
         $scope.selectedProfession = profession;
         $scope.queryProfession = profession;
         $scope.professionResults = [];
+    };
+
+    
+
+    $scope.register = function () {
+        alert('Yey !!!');
     };
 
 
