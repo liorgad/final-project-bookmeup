@@ -11,7 +11,7 @@ app.factory("professionService", function ($http, $log,$q) {
                 $log.debug(response);
                 occupations.clear();
                 response.data.occupations.forEach(element => {
-                    occupations.push(element);
+                    occupations.push(element.toTitleCase());
                 });
                 $log.debug(occupations);
                 isLoaded = true;

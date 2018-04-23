@@ -1,5 +1,5 @@
 app.controller("bookCtrl", function ($timeout, $q,$location,$log,$scope, professionService, $sce, serviceProvidersService) {
-    $scope.test = "bla";
+    
     $scope.professionResults = [];
     $scope.serviceProviders = [];
     $scope.selectedProfession = "";
