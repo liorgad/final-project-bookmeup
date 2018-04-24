@@ -1,18 +1,16 @@
-app.controller('registerCtrl', function ($scope, professionService, $sce, $log) {
+app.controller('registerCtrl', function ($scope,$location ,professionService, $sce, $log, serviceProvidersService) {
 
     $scope.uploadedFile = "";
-    $scope.firstName = "";
-    $scope.lastName = "";
-    $scope.selectedProfession = "";
+    $scope.firstName = "test";
+    $scope.lastName = "test";
+    $scope.selectedProfession = "dentist";
     $scope.queryProfession = "";
-    $scope.phoneNumber = "";
-    $scope.email = "";
-    $scope.pwd = "";
+    $scope.phoneNumber = "00000";
+    $scope.email = "me@me.me.me";
+    $scope.pwd = "123456";
 
-    $scope.pwdConfirm = "";
     $scope.professionResults = [];
 
-    $scope.params = {};
 
     $scope.showPassword = false;
 
@@ -50,11 +48,26 @@ app.controller('registerCtrl', function ($scope, professionService, $sce, $log) 
         $scope.professionResults = [];
     };
 
-    
+
 
     $scope.register = function () {
-        alert('Yey !!!');
+
+        serviceProvidersService.load().then(() => {
+            serviceProvidersService.add(
+                serviceProvidersService.serviceProviders.length+1,
+                $scope.firstName,
+                $scope.lastName,
+                $scope.uploadedFile,
+                $scope.phoneNumber,
+                $scope.email,
+                $scope.selectedProfession,
+                $scope.password).then(
+                () => {
+                    $location.path("/register/result");
+                },
+                (err) => {
+                    $log.error("Error loading service providers");
+                });
+        });
     };
-
-
 });

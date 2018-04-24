@@ -25,11 +25,16 @@
                     </a>
                 </div>
             </div>
-            <div class="form-group" novalidate>
-                <article class="border rounded py-1 pl-2 bg-light">Pick an image-file:
-                    <input type="file" accept="image/*" single fileread="uploadedFile" />
-                </article>
+            <div class="form-group custom-file input-img" novalidate>
+                <!-- <article class="border rounded py-1 pl-2 bg-light">Pick an image-file: -->
+                    <input class="custom-file-input" type="file" accept="image/*" single fileread="uploadedFile" id="customFile" name="myImage"  />
+                    <label class="custom-file-label" for="customFile">Select Image...</label>
+                <!-- </article> -->
             </div>
+            <!-- <div class="form-group custom-file input-img">
+                <input type="file" class="custom-file-input my-file-input" ng-model="editItem._attachments_uri.image" ng-change="showImgNameP()" accept="image/*" app-filereader id="customFile" name="myImage"  required>
+                <label class="custom-file-label" for="customFile">{{imgTxtP}}</label>
+            </div> -->
             <div class="form-group">
                 <input type="tel" class="form-control" name="phone" placeholder="Phone Number" ng-required=true ng-model="phoneNumber">
             </div>
@@ -40,7 +45,7 @@
                 <!-- show password as type="password" -->
                 <div ng-if="!showPassword" class="form-group has-feedback">                   
                     <div class="input-group">
-                        <input type="password" ng-model="params.password" class="form-control" placeholder="Password...">
+                        <input type="password" ng-model="password" class="form-control" placeholder="Password...">
                         <span class="border bg-light">
                             <i class="fa fa-eye form-control-feedback" ng-click="toggleShowPassword()" style="cursor: pointer; pointer-events: all;"></i>
                         </span>
@@ -50,7 +55,7 @@
                 <!-- show password as type="text" -->
                 <div ng-if="showPassword" class="form-group has-feedback">                    
                     <div class="input-group">
-                        <input type="text" ng-model="params.password" class="form-control" placeholder="Password...">
+                        <input type="text" ng-model="password" class="form-control" placeholder="Password...">
                         <span class="border bg-light">
                             <i class="fa fa-eye-slash form-control-feedback" ng-click="toggleShowPassword()" style="cursor: pointer; pointer-events: all;"></i>
                         </span>

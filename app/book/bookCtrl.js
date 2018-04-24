@@ -1,5 +1,5 @@
-app.controller("bookCtrl", function ($timeout, $q,$location,$log,$scope, professionService, $sce, serviceProvidersService) {
-    
+app.controller("bookCtrl", function ($timeout, $q, $location, $log, $scope, professionService, $sce, serviceProvidersService) {
+
     $scope.professionResults = [];
     $scope.serviceProviders = [];
     $scope.selectedProfession = "";
@@ -33,7 +33,10 @@ app.controller("bookCtrl", function ($timeout, $q,$location,$log,$scope, profess
         $scope.selectedProfession = profession;
         serviceProvidersService.load().then(() => { //successful load             
             $scope.serviceProviders = serviceProvidersService.serviceProviders.filter((v) => {
-                return v.occupation === $scope.selectedProfession;
+                if (v.occupation) {
+                    return v.occupation.indifferentIncludes($scope.selectedProfession);
+                }
+                return false;
             });
             $scope.queryProfession = "";
             $scope.professionResults = [];
@@ -42,7 +45,7 @@ app.controller("bookCtrl", function ($timeout, $q,$location,$log,$scope, profess
     };
 
     $scope.openDetails = function (serviceProvider) {
-        $location.path("/bookService/"+serviceProvider.id);
+        $location.path("/bookService/" + serviceProvider.id);
     };
 
     // $scope.keyPress = function (event) {

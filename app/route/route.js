@@ -16,6 +16,10 @@ app.config(function ($routeProvider, $locationProvider) {
             templateUrl: "app/register/register.html",
             controller: "registerCtrl"
         })
+        .when("/register/result", {
+            templateUrl: "app/registerResult/result.html",
+            controller: "registerCtrl"
+        })
         .when("/bookService/:serviceProviderId",{
             templateUrl : "app/bookService/bookService.html",
             controller : "bookServiceCtrl"

@@ -1,20 +1,28 @@
-app.factory("serviceProvidersService",function($q,$log,$http){
+app.factory("serviceProvidersService", function ($q, $log, $http) {
 
-    function ServiceProvider(id,fname,lname,image,phone,cellPhone,email,profession,address){
+    function ServiceProvider(id, fname, lname, image, phone, email, profession, password) {
         this.id = id;
-        this.fname =fname.toTitleCase();
+        this.fname = fname.toTitleCase();
         this.lname = lname.toTitleCase();
 
-        this.imageURL = (image == undefined || image == null || image == "")? '../../images/img_avatar3.png' : image;
-        
-        
+        // this.imageURL = (image == undefined || image == null || image == "") ? '../../images/img_avatar3.png' : image;
+
+        this.imageURL =image;
         this.phone = phone;
-        this.cellPhone =cellPhone;
-        this.email =email ;        
+        this.email = email;
         this.occupation = profession;
-        this.address = address;
-        this.occupiedTime = [];  
-        this.getFullName = function(){return String(this.fname + " " + this.lname).toTitleCase();};
+        this.password = password;
+        this.occupiedTime = [];
+        this.getFullName = function () {
+            return String(this.fname + " " + this.lname).toTitleCase();
+        };
+
+        this.getImage= ()=>{
+            if(this.imageURL){
+                return this.imageURL;
+            }
+            return  '../../images/img_avatar3.png';
+        };
     }
 
     // ServiceProvider.prototype.fromServerObject = function(spObject){
@@ -30,51 +38,58 @@ app.factory("serviceProvidersService",function($q,$log,$http){
     //     this.occupiedTime = spObject.data.occupied-time;  
     // };
 
+    var isLoaded = false;
     var serviceProviders = [];
 
-    function load(){
-        var async =$q.defer();
-        
-        $http.get("http://localhost:3000/service-providers").then(            
-        (response)=>{
-            $log.debug(response);
-            serviceProviders.clear();
-            response.data.forEach((element) =>{
-                serviceProviders.push(new ServiceProvider(element.id,element.fname,element.lname,element.imageURL,element.phone,
-                element.cellPhone,element.email,element.occupation,element.address));
+    function load() {
+        var async = $q.defer();
+
+        if (!isLoaded) {
+
+            $http.get("https://liorgad-my-cool-project.herokuapp.com/service-providers").then(
+                (response) => {
+                    $log.debug(response);
+                    serviceProviders.clear();
+                    response.data.forEach((element) => {
+                        serviceProviders.push(new ServiceProvider(element.id, element.fname, element.lname, element.imageURL, element.phone,
+                            element.email, element.occupation, element.password));
+                    });
+                    isLoaded = true;
+                    async.resolve();
+                },
+                (err) => {
+                    $log.error("Error getting service providers " + err);
+                    async.reject();
+                });
+        }else{
+            async.resolve();
+        }
+
+        return async.promise;
+
+    }
+
+    function add(id, fname, lname, image, phone, email, profession, password) {
+        var async = $q.defer();
+
+        var sp = new ServiceProvider(id, fname, lname, image, phone, email, profession, password);
+
+        $http.post("https://liorgad-my-cool-project.herokuapp.com/service-providers", JSON.stringify(sp))
+            .then((req, res) => {
+                $log.debug("Added " + JSON.stringify(sp) + " " + res);
+                serviceProviders.push(sp);
+                async.resolve();
+            }, (err) => {
+                $log.error("Error adding service provider " + JSON.stringify(sp));
+                async.reject();
             });
-            async.resolve();
-        },
-        (err)=> {
-            $log.error("Error getting service providers "+err);
-            async.reject();
-        });
-
-
-        return async.promise;        
+        return async.promise;
     }
 
-    function add(fname,lname,image,phone,cellPhone,email,profession,address){
-        var async =$q.defer();
-
-        var newId = serviceProviders.length;
-        var sp = new ServiceProvider(newId,lname,image,phone,cellPhone,email,profession,address);
-        
-        $http.post("http://localhost:3000/service-providers",JSON.stringify(sp)
-        .then((req,res)=>{
-            $log.debug("Added " + JSON.stringify(sp) + " " + res);
-            serviceProviders.push(sp);
-            async.resolve();
-        },(err)=>{
-            $log.error("Error adding service provider " + JSON.stringify(sp));
-            async.reject();
-        }));    
-        return async.promise;        
-    }
-
-    return{
-        serviceProviders : serviceProviders,
-        add : add,
-        load : load
+    return {
+        serviceProviders: serviceProviders,
+        add: add,
+        load: load,
+        isLoaded: isLoaded
     };
 });

@@ -22,7 +22,7 @@
         <div class="row" ng-show="serviceProviders.length > 0">
             <div class="col-md-3 my2" ng-repeat="serviceProvider in serviceProviders | filter:filterSelectedProfession">
                 <div class="card change-cursor" ng-click="openDetails(serviceProvider)">
-                    <img class="card-img-top" ng-src="{{serviceProvider.imageURL}}" alt="Card image">
+                    <img class="card-img-top" ng-src="{{serviceProvider.getImage()}}" alt="Card image">
                     <div class="card-body">
                         <h4 class="card-title">
                             {{serviceProvider.getFullName()}}
