@@ -1,0 +1,43 @@
+<div class="container" ng-controller="timePickerCtrl">
+    <div class="row">
+        <div class="col-md-4 border">
+            <div class="row">
+                <div class="text-center mx-auto">
+                    <h3>
+                        <small>{{dt|date :'d/M/y'}}</small>
+                    </h3>
+                    <hr>
+                    <div class="list-group my-2">
+                        <button ng-repeat="time in availableHours | filter : time.available" class="btn btn-primary my-1" ng-click="selectTime(time)"
+                            ng-disabled="!time.available">{{time.start}}:00-{{time.end}}:00</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 border">
+            <div ui-calendar="uiConfig.calendar" class="calendar" ng-model="eventSources"></div>
+
+            <div class="form-group">
+                <label for="form_address">Selected Time</label>
+                <input id="form_address" type="text" name="datetime" required="required" class="form-control" ng-model="selectedDate | date : 'dd/MM/yyyy hh:mm'" readonly>
+                <div class="help-block with-errors"></div>
+            </div>
+
+
+            <!-- <div class="mx-auto">
+                <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre>
+
+                <h4>Inline</h4>
+                <div style="display:inline-block; min-height:290px;">
+                    <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div>
+                </div>
+
+                <hr />
+                <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
+                <button type="button" class="btn btn-sm btn-default" ng-click="setDate(2009, 7, 24)">2009-08-24</button>
+                <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button>
+                <button type="button" class="btn btn-sm btn-default" ng-click="toggleMin()" uib-tooltip="After today restriction">Min date</button>
+            </div> -->
+        </div>
+    </div>
+</div>

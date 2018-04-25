@@ -2,23 +2,22 @@ app.controller("bookServiceCtrl", function ($scope, $location, $routeParams, ser
 
      $scope.customerFirstName="test";
      $scope.customerLastName="test";
-     $scope.customerEmail="test";
+     $scope.customerEmail="me@me.me.me";
      $scope.customerPhone="test";
      $scope.customerAddress="test";
      $scope.customerMessage="test";
+     $scope.selectedDate =  new Date();
 
     var selectedProviderId = parseInt($routeParams.serviceProviderId);
 
-    var spData = serviceProvidersService.serviceProviders.find((e) => e.id == selectedProviderId);
+    var spData = serviceProvidersService.getProvider(selectedProviderId);
 
     $scope.serviceProvider = spData;
 
     if (undefined == spData || null == spData) {
         $log.warn("Warning, service provider " + selectedProviderId + " data not found");
         return;
-    }
-    
-    
+    }    
 
     $scope.createAppointmentSummery= function(){
 
@@ -28,17 +27,10 @@ app.controller("bookServiceCtrl", function ($scope, $location, $routeParams, ser
             email : $scope.customerEmail,
             phone : $scope.customerPhone,
             address : $scope.customerAddress,
-            message : $scope.customerMessage
+            message : $scope.customerMessage            
         };
-    
-        var start = moment().date();
-        var end = start;
-        var date = {
-            start : start,
-            end : end
-        }; 
 
-        appointementService.setTempAppointement($scope.serviceProvider,customer,date);
+        appointementService.setTempAppointement($scope.serviceProvider,customer);
 
         $location.path("/bookService/"+$scope.serviceProvider.id+"/summery");        
     };

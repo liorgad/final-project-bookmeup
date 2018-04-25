@@ -37,14 +37,15 @@ app.controller("bookCtrl", function ($timeout, $q, $location, $log, $scope, prof
                     return v.occupation.indifferentIncludes($scope.selectedProfession);
                 }
                 return false;
-            });
-            $scope.queryProfession = "";
+            }); 
+            $scope.queryProfession = profession;           
             $scope.professionResults = [];
         });
 
     };
 
     $scope.openDetails = function (serviceProvider) {
+        $scope.queryProfession = "";
         $location.path("/bookService/" + serviceProvider.id);
     };
 

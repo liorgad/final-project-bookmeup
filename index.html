@@ -7,22 +7,21 @@
     <title>BookMeUp - book a meeting</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    
+
     <!-- jquery, moment, and angular have to get included before fullcalendar -->
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="node_modules/moment/min/moment.min.js"></script> 
+    <script type="text/javascript" src="node_modules/moment/min/moment.min.js"></script>
     <script src="node_modules/fullcalendar/dist/fullcalendar.min.js"></script>
     <script src="node_modules/fullcalendar/dist/gcal.min.js"></script>
     <!-- angular -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="node_modules/angular-ui-calendar/src/calendar.js"></script>
     <link rel="stylesheet" href="node_modules/fullcalendar/dist/fullcalendar.css" />
-    
-       
-   
+
+
 
     <!-- angular routing -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>        
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
 
     <!-- my Bootstrap 4 Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -43,6 +42,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet"> -->
 
+    <!-- emailjs -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.1.0/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("user_ymCfff1QVi2e0PzBQKyxQ");
+        })();
+    </script>
+
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
 
@@ -52,21 +59,37 @@
     <script src="app/route/route.js"></script>
 
     <script src="app/landingPage/landingPageCtrl.js"></script>
+
     <script src="app/book/bookCtrl.js"></script>
+
     <script src="app/bookService/bookServiceCtrl.js"></script>
+
     <script src="app/model/professionsService.js"></script>
     <script src="app/model/serviceProvidersService.js"></script>
-    <script src="app/detailsCard/detailsCardCtrl.js"></script>
-    <script src="app/appointementSummery/appointmentSummeryCtrl.js"></script>
     <script src="app/model/appointmentService.js"></script>
+    <script src="app/model/customerService.js"></script>
+
+    <script src="app/detailsCard/detailsCardCtrl.js"></script>
+    <script src="app/detailsCard/detailsCardDirective.js"></script>
+
+    <script src="app/appointementSummery/appointmentSummeryCtrl.js"></script>
+
     <script src="app/register/registerCtrl.js"></script>
+
     <script src="app/registerResult/resultCtrl.js"></script>
-    <script src="app/directives/fileRead/fileReadDirective.js"></script>
 
     <script src="app/navbar/navbarDirective.js"></script>
+
     <script src="app/footer/footerDirective.js"></script>
+
+    <script src="app/directives/fileRead/fileReadDirective.js"></script>
+
+    <script src="app/timePicker/timePickerCtrl.js"></script>
+    <script src="app/timePicker/timePickerDirective.js"></script>
+
+
     <script src="app/utilities/utilities.js"></script>
-    
+
 </head>
 
 <body ng-app="bookMeUp">

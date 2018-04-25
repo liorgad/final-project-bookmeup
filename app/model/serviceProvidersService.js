@@ -1,6 +1,6 @@
 app.factory("serviceProvidersService", function ($q, $log, $http) {
 
-    function ServiceProvider(id, fname, lname, image, phone, email, profession, password) {
+    function ServiceProvider(id, fname, lname, image, phone, email, profession, password,occupiedTime) {
         this.id = id;
         this.fname = fname.toTitleCase();
         this.lname = lname.toTitleCase();
@@ -12,7 +12,7 @@ app.factory("serviceProvidersService", function ($q, $log, $http) {
         this.email = email;
         this.occupation = profession;
         this.password = password;
-        this.occupiedTime = [];
+        this.occupiedTime = occupiedTime ? occupiedTime: [];
         this.getFullName = function () {
             return String(this.fname + " " + this.lname).toTitleCase();
         };
@@ -24,6 +24,8 @@ app.factory("serviceProvidersService", function ($q, $log, $http) {
             return  '../../images/img_avatar3.png';
         };
     }
+
+    var selected = null;
 
     // ServiceProvider.prototype.fromServerObject = function(spObject){
     //     this.id = spObject.id;
@@ -52,7 +54,7 @@ app.factory("serviceProvidersService", function ($q, $log, $http) {
                     serviceProviders.clear();
                     response.data.forEach((element) => {
                         serviceProviders.push(new ServiceProvider(element.id, element.fname, element.lname, element.imageURL, element.phone,
-                            element.email, element.occupation, element.password));
+                            element.email, element.occupation, element.password,element.occupiedTime));
                     });
                     isLoaded = true;
                     async.resolve();
@@ -86,10 +88,63 @@ app.factory("serviceProvidersService", function ($q, $log, $http) {
         return async.promise;
     }
 
+    function loadOccupiedTime(id,date){
+        //let async = $q.defer();
+
+        if(serviceProviders){
+            let sp = serviceProviders.find((s) => s.id==id);
+            if(sp){
+
+                let dayOccupied = sp.occupiedTime.filter( (d) => 
+                {                   
+                    return (new Date(d.date).toDateString()) === (new Date(date).toDateString());
+                });
+                //async.resolve(dayOccupied);   
+                return dayOccupied;             
+            }
+            //async.reject("Error, could not find service provider with id="+id);
+            return [];
+        }else{
+            //async.reject("Error, service providers list is empty");
+            return [];
+        }
+
+        //return async.promise;
+        return [];
+    }
+
+    function getProvider(id){
+        let sp = serviceProviders.find((e) => e.id == id);
+        selected = sp;
+        return selected;
+    }
+
+    function getSelectedProvider(){
+        return selected;
+    }  
+    
+    function updateAppointment(time){
+        var async = $q.defer();
+        selected.occupiedTime.push(time);
+        $http.put("https://liorgad-my-cool-project.herokuapp.com/service-providers/"+selected.id, JSON.stringify(selected))
+            .then((req, res) => {
+                $log.debug("updated " + JSON.stringify(selected) + " " + res);                
+                async.resolve();
+            }, (err) => {
+                $log.error("Error updaing service provider " + JSON.stringify(selected));
+                async.reject();
+            });
+        return async.promise;
+    }
+
     return {
         serviceProviders: serviceProviders,
         add: add,
         load: load,
-        isLoaded: isLoaded
+        isLoaded: isLoaded,
+        loadOccupiedTime : loadOccupiedTime,
+        getSelectedProvider : getSelectedProvider,
+        getProvider : getProvider,
+        updateAppointment :updateAppointment
     };
 });
