@@ -1,11 +1,11 @@
 app.controller("bookServiceCtrl", function ($scope, $location, $routeParams, serviceProvidersService, $log,appointementService) {
 
-     $scope.customerFirstName="test";
-     $scope.customerLastName="test";
-     $scope.customerEmail="me@me.me.me";
-     $scope.customerPhone="test";
-     $scope.customerAddress="test";
-     $scope.customerMessage="test";
+     $scope.customerFirstName="";
+     $scope.customerLastName="";
+     $scope.customerEmail="";
+     $scope.customerPhone="";
+     $scope.customerAddress="";
+     $scope.customerMessage="";
      $scope.selectedDate =  new Date();
 
     var selectedProviderId = parseInt($routeParams.serviceProviderId);
