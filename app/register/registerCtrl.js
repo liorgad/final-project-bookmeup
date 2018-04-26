@@ -60,9 +60,6 @@ app.controller('registerCtrl', function ($scope,$location ,professionService, $s
 
 
     $scope.register = function () {
-        $location.path("/register/result");
-        return;
-
         serviceProvidersService.load().then(() => {
             serviceProvidersService.add(
                 serviceProvidersService.serviceProviders.length+1,
