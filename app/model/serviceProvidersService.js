@@ -21,7 +21,7 @@ app.factory("serviceProvidersService", function ($q, $log, $http) {
             if(this.imageURL){
                 return this.imageURL;
             }
-            return  '../../images/img_avatar3.png';
+            return  'images/img_avatar3.png';
         };
     }
 
