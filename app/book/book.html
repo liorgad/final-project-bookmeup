@@ -16,6 +16,11 @@
             </div>
         </div>
     </form>
+    <div class="container">
+        <div class="row">
+            <button type="button" class="btn btn-outline-success" ng-repeat="occupation in professionResults" ng-click="selectProfession(occupation)" ng-show="professionResults.length > 0">{{occupation}}</button>
+        </div>
+    </div>
 
     <div class="container-fluid">
         <hr class="my-2">

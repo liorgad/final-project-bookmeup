@@ -4,7 +4,9 @@ app.controller("bookCtrl", function ($timeout, $q, $location, $log, $scope, prof
     $scope.serviceProviders = [];
     $scope.selectedProfession = "";
 
-    professionService.load();
+    professionService.load().then(()=>{
+        $scope.professionResults = professionService.professions;
+    });
 
     $scope.searchProfessionChange = function () {
         if ($scope.queryProfession) {

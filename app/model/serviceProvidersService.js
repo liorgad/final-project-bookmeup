@@ -57,7 +57,7 @@ app.factory("serviceProvidersService", function ($q, $log, $http) {
                             element.email, element.occupation, element.password,element.occupiedTime));
                     });
                     isLoaded = true;
-                    async.resolve();
+                    async.resolve(serviceProviders);
                 },
                 (err) => {
                     $log.error("Error getting service providers " + err);
