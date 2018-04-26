@@ -18,11 +18,11 @@
     </form>
     <div class="container">
         <div class="row">
-            <button type="button" class="btn btn-outline-success" ng-repeat="occupation in professionResults" ng-click="selectProfession(occupation)" ng-show="professionResults.length > 0">{{occupation}}</button>
+            <button type="button" class="btn btn-outline-success mx-1" ng-repeat="occupation in professionResults" ng-click="selectProfession(occupation)" ng-show="professionResults.length > 0">{{occupation}}</button>
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid my-2">
         <hr class="my-2">
         <div class="row" ng-show="serviceProviders.length > 0">
             <div class="col-md-3 my2" ng-repeat="serviceProvider in serviceProviders | filter:filterSelectedProfession">

@@ -1,31 +1,32 @@
 app.factory("professionService", function ($http, $log,$q,serviceProvidersService) {
-    var isLoaded = false;
+    var isLoaded,isAllLoaded = false;
     var occupations =[];
+    var allOccupations = [];
 
-    // function load(){
-    //     var async = $q.defer();
+    function loadAllOccupations(){
+        var async = $q.defer();
 
-    //     if (!isLoaded) {
-    //         $http.get("https://raw.githubusercontent.com/dariusk/corpora/master/data/humans/occupations.json").then(function (response) {
-    //             //on success
-    //             $log.debug(response);
-    //             occupations.clear();
-    //             response.data.occupations.forEach(element => {
-    //                 occupations.push(element.toTitleCase());
-    //             });
-    //             $log.debug(occupations);
-    //             isLoaded = true;
-    //             async.resolve();
+        if (!isAllLoaded) {
+            $http.get("https://raw.githubusercontent.com/dariusk/corpora/master/data/humans/occupations.json").then(function (response) {
+                //on success
+                $log.debug(response);
+                allOccupations.clear();
+                response.data.occupations.forEach(element => {
+                    allOccupations.push(element.toTitleCase());
+                });
+                $log.debug(allOccupations);
+                isAllLoaded = true;
+                async.resolve(allOccupations);
     
-    //         }, function (response) {
-    //             //on error
-    //             $log.erorr("Error loading professions list " + response);
-    //             async.reject();
-    //         });
-    //     }
+            }, function (response) {
+                //on error
+                $log.erorr("Error loading professions list " + response);
+                async.reject();
+            });
+        }
 
-    //     return async.promise;
-    // }
+        return async.promise;
+    }
 
     function load(){
         var async = $q.defer();
@@ -71,6 +72,8 @@ app.factory("professionService", function ($http, $log,$q,serviceProvidersServic
 
     return {
         load : load,
-        professions : occupations
+        professions : occupations,
+        loadAllOccupations : loadAllOccupations,
+        allOccupations : allOccupations
     };
 });

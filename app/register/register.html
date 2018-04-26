@@ -41,26 +41,16 @@
             <div class="form-group">
                 <input type="email" class="form-control" name="email" placeholder="Email" ng-required=true ng-model="email">
             </div>
-            <div class="form-group">
-                <!-- show password as type="password" -->
-                <div ng-if="!showPassword" class="form-group has-feedback">                   
+            <div class="form-group">               
+                <div class="form-group has-feedback">                   
                     <div class="input-group">
-                        <input type="password" ng-model="password" class="form-control" placeholder="Password...">
+                        <input type="{{pwdType}}" ng-model="password" class="form-control" placeholder="Password...">
                         <span class="border bg-light">
-                            <i class="fa fa-eye form-control-feedback" ng-click="toggleShowPassword()" style="cursor: pointer; pointer-events: all;"></i>
+                            <i class="fa {{iconClassType}} form-control-feedback" ng-click="toggleShowPassword()" style="cursor: pointer; pointer-events: all;"></i>
                         </span>
                     </div>
 
-                </div>
-                <!-- show password as type="text" -->
-                <div ng-if="showPassword" class="form-group has-feedback">                    
-                    <div class="input-group">
-                        <input type="text" ng-model="password" class="form-control" placeholder="Password...">
-                        <span class="border bg-light">
-                            <i class="fa fa-eye-slash form-control-feedback" ng-click="toggleShowPassword()" style="cursor: pointer; pointer-events: all;"></i>
-                        </span>
-                    </div>
-                </div>
+                </div>               
             </div>            
             <div class="form-group">
                 <label class="checkbox-inline">
@@ -73,8 +63,8 @@
                 <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>                
             </div>
         </form>
-        <div class="text-center">Already have an account?
+        <!-- <div class="text-center">Already have an account?
             <a href="#">Sign in</a>
-        </div>
+        </div> -->
     </div>
 </div>

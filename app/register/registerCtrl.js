@@ -1,28 +1,37 @@
 app.controller('registerCtrl', function ($scope,$location ,professionService, $sce, $log, serviceProvidersService) {
 
     $scope.uploadedFile = "";
-    $scope.firstName = "test";
-    $scope.lastName = "test";
-    $scope.selectedProfession = "dentist";
+    $scope.firstName = "";
+    $scope.lastName = "";
+    $scope.selectedProfession = "";
     $scope.queryProfession = "";
-    $scope.phoneNumber = "00000";
-    $scope.email = "me@me.me.me";
-    $scope.pwd = "123456";
+    $scope.phoneNumber = "";
+    $scope.email = "";    
 
     $scope.professionResults = [];
 
+    $scope.pwdType = "password";
+    $scope.iconClassType = "fa-eye";
 
     $scope.showPassword = false;
 
     $scope.toggleShowPassword = function () {
         $scope.showPassword = !$scope.showPassword;
+
+        if($scope.showPassword){
+            $scope.pwdType = "text";
+            $scope.iconClassType = "fa-eye-slash";
+        }else{
+            $scope.pwdType = "password";
+            $scope.iconClassType = "fa-eye";
+        }
     };
 
-    professionService.load();
+    professionService.loadAllOccupations();
 
     $scope.searchProfessionChange = function () {
         if ($scope.queryProfession) {
-            $scope.professionResults = professionService.professions;
+            $scope.professionResults = professionService.allOccupations;
         } else {
             $scope.professionResults = [];
         }
