@@ -26,7 +26,13 @@ app.controller("bookCtrl", function ($timeout, $q, $location, $log, $scope, prof
 
     // filters results
     $scope.filterProfession = function (prof) {
-        return prof.indifferentIncludes($scope.queryProfession);
+        if(prof){
+            if($scope.queryProfession){
+                return prof.indifferentIncludes($scope.queryProfession);
+            } 
+        }
+        return false;
+        
     };
 
 
