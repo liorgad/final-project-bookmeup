@@ -93,9 +93,17 @@
 </head>
 
 <body ng-app="bookMeUp" class="bg-light" >
-    <navbar-directive></navbar-directive>
-    <ng-view></ng-view>
-    <footer-directive></footer-directive>
+    <div class="row">
+        <div class="col-12">
+            <navbar-directive></navbar-directive>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 bg-pallete-2018-blue"><ng-view></ng-view></div>
+    </div>
+    <div class="row">
+        <div class="col-12"><footer-directive></footer-directive></div>
+    </div>
 </body>
 
 </html>
