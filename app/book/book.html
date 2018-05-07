@@ -1,6 +1,5 @@
-<div class="container-fluid mt-2 max-view bg-pallete-2018-blue">
-
-    <div class="container py-2">
+<div class="container-fluid">
+    <div class="container py-2 mt-2">
         <h1 class="display-4">Select a proffetional and book a meeting...</h1>
         <hr class="my-2">
     
@@ -20,14 +19,19 @@
         </form>
         <div class="container">
             <div class="row">
-                <button type="button" class="btn btn-warning mx-1" ng-repeat="occupation in professionResults" ng-click="selectProfession(occupation)" ng-show="professionResults.length > 0">{{occupation}}</button>
+                <div class="col-3"><hr></div>
+                <h2 class="col-6 text-center my-auto">Select Available Professions</h2>
+                <div class="col-3"><hr></div>
+            </div>
+            <div class="row mt-2">
+                <button type="button" class="btn btn-warning mx-1 my-1" ng-repeat="occupation in professionResults | orderBy:asc" ng-click="selectProfession(occupation)" ng-show="professionResults.length > 0">{{occupation}}</button>
             </div>
         </div>
     
-        <div class="container-fluid my-2">
-            <hr class="my-2">
+        <div class="container my-2">
+            <!-- <hr class="my-2"> -->
             <div class="row" ng-show="serviceProviders.length > 0">
-                <div class="col-md-3 my2" ng-repeat="serviceProvider in serviceProviders | filter:filterSelectedProfession">
+                <div class="col-md-3 my-2" ng-repeat="serviceProvider in serviceProviders | filter:filterSelectedProfession">
                     <div class="card change-cursor" ng-click="openDetails(serviceProvider)">
                         <img class="card-img-top" ng-src="{{serviceProvider.getImage()}}" alt="Card image">
                         <div class="card-body">

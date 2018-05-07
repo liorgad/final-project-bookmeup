@@ -96,6 +96,18 @@
     z-index: 2;
 }
 
+.before-heading,
+.after-heading{
+    content: "";
+    height: 2px;
+    width: 28%;
+    background: #d4d4d4;
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+}
+
+
 .signup-form h2:before {
     left: 0;
 }
