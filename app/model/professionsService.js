@@ -1,5 +1,5 @@
 app.factory("professionService", function ($http, $log,$q,serviceProvidersService) {
-    var isLoaded,isAllLoaded = false;
+    var isLoaded = false,isAllLoaded = false;
     var occupations =[];
     var allOccupations = [];
 
