@@ -24,7 +24,11 @@ app.factory("professionService", function ($http, $log,$q,serviceProvidersServic
                 async.reject();
             });
         }
-
+        else{
+            if(allOccupations){
+                async.resolve(allOccupations);
+            }
+        }
         return async.promise;
     }
 
@@ -63,8 +67,11 @@ app.factory("professionService", function ($http, $log,$q,serviceProvidersServic
                     $log.erorr("Error loading professions list " + response);
                     async.reject();
                 }
-            );
-            
+            );            
+        }
+        else{
+            $log.debug('Occupations preloaded: ' + JSON.stringify(occupations));
+            async.resolve();
         }
 
         return async.promise;
